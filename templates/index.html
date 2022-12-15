@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for foo in page_obj %}
+<div class="">{{ foo }}</div>
+{% endfor %}
+
+
+<div class="dataTables_paginate paging_simple_numbers" id="data-table-default_paginate">
+    <ul class="pagination">
+        {% for foo in all_pages_num %}
+            <li class="paginate_button page-item previous {% if foo == current_page %} active {% endif %}"
+
+                id="data-table-default_previous"><a {% if foo == current_page or foo == "…" %}
+                href="#" {% else %} href="{% url 'index' %}?page={{ foo }}" {% endif %}
+                aria-controls="data-table-default"
+                data-dt-idx="0" tabindex="0"
+                class="page-link">{{ foo }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
